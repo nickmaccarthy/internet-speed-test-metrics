@@ -20,6 +20,7 @@ def load_config(path=os.path.join(SHOME, 'config.yml')):
             return doc 
         except Exception as e:
             logger.exception('Unable to open yaml config at: {}, reason: {}'.format(path, e))
+
 config = load_config()
 
 output_file = config.get('output_file', 'output.json')
@@ -37,7 +38,7 @@ def run_test():
         res['internet-accessable'] = 'yes'
     except Exception as e:
         ts = datetime.datetime.utcnow()
-        ts = ts.isoformat()
+        ts = "%sZ" % (ts.isoformat())
         res['@timestamp'] = ts 
         res['message'] = 'not able to get to internet'
         res['internet-accessable'] = 'no'
@@ -46,14 +47,10 @@ def run_test():
         res['bytes_sent'] = 0
         res['bytes_received'] = 0 
 
-    
-    pprint(res)
-
-    with open(output_file, 'a+') as f:
-        f.write("%s\n" % (json.dumps(res))) 
+    print("%s\n" % json.dumps(res), flush=True)
 
 
 if __name__ == "__main__":
     while True:
         run_test()
-        time.sleep(config.get('run_interval', 120))
+        time.sleep(config.get('run_interval', 30))

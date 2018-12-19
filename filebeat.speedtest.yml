@@ -1,0 +1,45 @@
+setup.template.name: speedtest
+setup.template.pattern: "speedtest-*"
+
+filebeat.autodiscover:
+  providers:
+    - type: docker 
+      templates:
+        - condition:
+            contains:
+              docker.container.image: pingtest
+          config:
+            - type: docker
+              containers.ids:
+                - "${data.docker.container.id}"
+              json.keys_under_root: true
+              json.overwrite_keys: true
+              json.add_error_key: true
+              fields:
+                es_index: speedtest
+                rabbit_queue: default 
+                machine: ${MACHINE_NAME}
+
+    - type: docker
+      templates:
+        - condition:
+            contains:
+              docker.container.image: speedtest
+          config:
+            - type: docker
+              containers.ids:
+                - "${data.docker.container.id}"
+              json.keys_under_root: true
+              json.overwrite_keys: true
+              json.add_error_key: true
+              fields:
+                es_index: speedtest
+                rabbit_queue: default 
+                machine: ${MACHINE_NAME}
+
+# output.logstash:
+#     hosts: ["elk.local:5044"]
+
+output.elasticsearch:
+  hosts: ${ES_HOSTS}
+  index: "speedtest-%{+yyyy.MM.dd}"

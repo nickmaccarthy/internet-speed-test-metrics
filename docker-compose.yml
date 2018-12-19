@@ -1,0 +1,29 @@
+version: '3'
+services:
+  pingtest:
+    environment:
+      - PING_HOST=${ping_host}
+    build:
+      context: ./
+      dockerfile: Dockerfile-pingtest
+
+  speedtest: 
+    environment:
+      - "PYTHONUNBUFFERED=1"
+    build:
+      context: ./
+      dockerfile: Dockerfile-speedtest 
+
+  filebeat:
+      image: docker.elastic.co/beats/filebeat:6.5.3
+      environment:
+        - MACHINE_NAME=${machine_name}
+        - ES_HOSTS=${es_hosts}
+
+      user: root
+      volumes:
+        - ./filebeat.speedtest.yml:/usr/share/filebeat/filebeat.yml:ro
+        #- /var/lib/docker/containers:/mnt/log/containers:ro
+        - /var/lib/docker/containers:/var/lib/docker/containers:ro
+        #- ~/Library/Containers/com.docker.docker/Data/docker.sock:/var/run/docker.sock:ro
+        - /var/run/docker.sock:/var/run/docker.sock:ro
