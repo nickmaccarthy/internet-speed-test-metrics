@@ -1,7 +1,5 @@
 output.json
-*.json 
 *.swp
 .env 
 env/
 .vscode
-output.json 
