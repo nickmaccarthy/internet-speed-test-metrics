@@ -16,3 +16,8 @@ For best results, this was tested and built with [ELK In a Box](https://github.c
     * `ping_hosts` - IP or Hostname of the host to ping agsinst for the ping container
 3. Run `docker-compose up` , ensure everything is working.  
     * To run this in the background, simply run docker compose in daemon mode `docker-compose up -d` 
+
+# Grafana Dashboard
+A Grafana dashboard is available for you with `grafana-dashboard.json` (simply import this into your own grafana).
+
+![Grafana Dashboard](img/grafana_speedtest_dashboard.png)
