@@ -6,9 +6,6 @@ import json
 import time 
 
 def ping(host):
-    """
-    Returns True if host responds to a ping request
-    """
     import subprocess, platform
 
     cmd = "ping -c 2 -W 1 %s" % (host)
