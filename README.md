@@ -10,7 +10,7 @@ For best results, this was tested and built with [ELK In a Box](https://github.c
 
 # Usage
 1. Install Docker along with docker-compose
-2. copy `.env.example` to `.env`, and fill in all relevant info in this file and save it
+2. copy `env.example` to `.env` (`cp env.example .env`), and fill in all relevant info in this file and save it
     * `machine_name` - name of your machine as you want it to show up against the dashboard
     * `es_hosts` - IP(s) or hostname(s) of the Elasticsearch hosts to send your data to 
     * `ping_hosts` - IP or Hostname of the host to ping agsinst for the ping container
