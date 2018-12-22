@@ -37,9 +37,10 @@ filebeat.autodiscover:
                 rabbit_queue: default 
                 machine: ${MACHINE_NAME}
 
-# output.logstash:
-#     hosts: ["elk.local:5044"]
-
 output.elasticsearch:
   hosts: ${ES_HOSTS}
+  scheme: ${ES_SCHEME}
+  path: ${ES_PATH}
+  username: ${ES_USERNAME}
+  password: ${ES_PASSWORD}
   index: "speedtest-%{+yyyy.MM.dd}"
