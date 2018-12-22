@@ -23,6 +23,7 @@ services:
         - ES_PASSWORD=${es_password}
         - ES_SCHEME=${es_scheme}
         - ES_PATH=${es_path}
+        - ES_PROXY_URL=${es_proxy_url}
       user: root
       volumes:
         - ./filebeat.speedtest.yml:/usr/share/filebeat/filebeat.yml:ro

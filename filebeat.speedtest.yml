@@ -43,4 +43,5 @@ output.elasticsearch:
   path: ${ES_PATH}
   username: ${ES_USERNAME}
   password: ${ES_PASSWORD}
+  proxy_url: ${ES_PROXY_URL}
   index: "speedtest-%{+yyyy.MM.dd}"
