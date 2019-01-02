@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1545252920869,
+  "iteration": 1546448786476,
   "links": [],
   "panels": [
     {
@@ -38,7 +38,7 @@
       "datasource": "ES - speedtest-*",
       "fill": 1,
       "gridPos": {
-        "h": 9,
+        "h": 6,
         "w": 24,
         "x": 0,
         "y": 1
@@ -163,10 +163,10 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 7,
+        "h": 5,
         "w": 8,
         "x": 0,
-        "y": 10
+        "y": 7
       },
       "id": 9,
       "interval": null,
@@ -263,10 +263,10 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 7,
+        "h": 5,
         "w": 8,
         "x": 8,
-        "y": 10
+        "y": 7
       },
       "id": 10,
       "interval": null,
@@ -363,10 +363,10 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 7,
+        "h": 5,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 7
       },
       "id": 7,
       "interval": null,
@@ -450,7 +450,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 12
       },
       "id": 19,
       "panels": [],
@@ -465,10 +465,10 @@
       "datasource": "ES - speedtest-*",
       "fill": 1,
       "gridPos": {
-        "h": 8,
+        "h": 5,
         "w": 9,
         "x": 0,
-        "y": 18
+        "y": 13
       },
       "id": 14,
       "legend": {
@@ -569,10 +569,10 @@
       "datasource": "ES - speedtest-*",
       "fill": 1,
       "gridPos": {
-        "h": 8,
+        "h": 5,
         "w": 7,
         "x": 9,
-        "y": 18
+        "y": 13
       },
       "id": 15,
       "legend": {
@@ -594,11 +594,23 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "stack": true,
+      "steppedLine": true,
       "targets": [
         {
           "bucketAggs": [
+            {
+              "fake": true,
+              "field": "fields.machine",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
             {
               "field": "@timestamp",
               "id": "2",
@@ -669,16 +681,16 @@
     },
     {
       "aliasColors": {},
-      "bars": true,
+      "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "ES - speedtest-*",
       "fill": 1,
       "gridPos": {
-        "h": 8,
-        "w": 8,
+        "h": 5,
+        "w": 7,
         "x": 16,
-        "y": 18
+        "y": 13
       },
       "id": 17,
       "legend": {
@@ -690,7 +702,7 @@
         "total": false,
         "values": false
       },
-      "lines": false,
+      "lines": true,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
@@ -701,7 +713,7 @@
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
-      "steppedLine": false,
+      "steppedLine": true,
       "targets": [
         {
           "bucketAggs": [
@@ -792,7 +804,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 18
       },
       "id": 2,
       "legend": {
@@ -808,14 +820,14 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
+      "nullPointMode": "connected",
       "percentage": false,
-      "pointradius": 3,
+      "pointradius": 1,
       "points": true,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
@@ -837,7 +849,7 @@
               "id": "1",
               "meta": {},
               "settings": {
-                "missing": 0
+                "missing": null
               },
               "type": "avg"
             }
@@ -899,7 +911,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 18
       },
       "id": 3,
       "legend": {
@@ -914,9 +926,9 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
+      "nullPointMode": "connected",
       "percentage": false,
-      "pointradius": 3,
+      "pointradius": 1,
       "points": true,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -943,7 +955,7 @@
               "id": "1",
               "meta": {},
               "settings": {
-                "missing": 0
+                "missing": null
               },
               "type": "avg"
             }
@@ -1005,7 +1017,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 27
       },
       "id": 23,
       "legend": {
@@ -1057,9 +1069,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "fields.machine",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "refId": "A",
@@ -1118,7 +1132,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 27
       },
       "id": 12,
       "legend": {
@@ -1140,7 +1154,7 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": false,
       "targets": [
         {
@@ -1170,9 +1184,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "internet-accessable",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "fields.machine:$machine_name",
@@ -1232,9 +1248,9 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "clickshare-mac",
+          "text": "All",
           "value": [
-            "clickshare-mac"
+            "$__all"
           ]
         },
         "datasource": "ES - speedtest-*",
@@ -1290,5 +1306,5 @@
   "timezone": "",
   "title": "Speedtest",
   "uid": "mnBXS4smk",
-  "version": 14
+  "version": 6
 }
